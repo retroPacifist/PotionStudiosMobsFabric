@@ -1,0 +1,36 @@
+{ "schemaVersion": 1,
+  "id": "mobsgalore",
+  "version": "${version}",
+
+  "name": "Mobsgalore",
+  "description": "swagggy - temporary desc",
+  "authors": [
+    "retroPacifist",
+    "grimboo",
+    "unknownbeetle"
+  ],
+  "contact": {
+    "homepage": "https://github.com/retroPacifist/PotionStudiosMobsFabric",
+    "sources":  "https://github.com/retroPacifist/PotionStudiosMobsFabric",
+    "issues":   "https://github.com/retroPacifist/PotionStudiosMobsFabric/issues"
+  },
+
+  "license": "GPL-3.0",
+  "icon": "assets/mobsgalore/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main":   [ "io.github.retropacifist.mobsgalore.common.Mobsgalore" ],
+    "client": [ "io.github.retropacifist.mobsgalore.client.MobsgaloreClient" ]
+  },
+  "mixins": [ "mobsgalore.mixins.json" ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
