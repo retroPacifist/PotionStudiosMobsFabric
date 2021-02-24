@@ -3,25 +3,25 @@ package io.github.retropacifist.mobsgalore.common;
 import io.github.retropacifist.mobsgalore.common.entities.MobsgaloreEntities;
 import io.github.retropacifist.mobsgalore.common.items.MobsgaloreItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
+import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import static org.apache.logging.log4j.LogManager.getLogger;
 
 public class Mobsgalore implements ModInitializer {
     public static final String MOD_ID = "mobsgalore";
 
+    public static final Logger LOGGER = getLogger("Mobsgalore");
+
     @Override
     public void onInitialize() {
-        // registering on worker threads
-        ExecutorService service = Executors.newCachedThreadPool();
+        MobsgaloreEntities.initialize();
+        MobsgaloreItems.initialize();
 
-        try {
-            service.submit(new MobsgaloreEntities());
-            service.submit(new MobsgaloreItems());
-        } finally {
-            service.shutdown();
-        }
+        FabricDefaultAttributeRegistry.register(MobsgaloreEntities.SCUTTLER, MobEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(MobsgaloreEntities.TEMPLE_GUARD, MobEntity.createMobAttributes());
     }
 
     // forge mapping for identifier is ResourceLocation
