@@ -128,9 +128,9 @@ public class BoarEntityModel<T extends MountEntity> extends CompositeEntityModel
     }
 
     @Override
-    public void setAngles(T entity, float angle, float distance, float animationProgress, float headYaw, float headPitch) {
-        head.yaw = headYaw * 0.01F;
-        head.pitch = headPitch * 0.01F;
+    public void setAngles(T entity, float angle, float distance, float animationProgress, float yaw, float pitch) {
+        head.yaw = yaw * 0.01F;
+        head.pitch = pitch * 0.01F;
 
         rightEar.pitch = MathHelper.cos(angle * 0.06F + 3.14F) * distance;
         leftEar.pitch = MathHelper.cos(angle * 0.06F + 3.14F) * distance;
